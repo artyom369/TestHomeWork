@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testImplementation group: 'org.testng', name: 'testng', version: '7.9.0'
+    implementation group: 'io.appium', name: 'java-client', version: '9.0.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.16.1'
+}
+
+test {
+    useTestNG() { testLogging.showStandardStreams = true }
+}
+
+task first_test(type: Test) {
+    useTestNG() {
+        testLogging.showStandardStreams = true
+        useDefaultListeners = true
+        suites 'src/test/resources/FirstTest.xml'
+    }
+}

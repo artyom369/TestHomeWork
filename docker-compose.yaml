@@ -1,0 +1,40 @@
+---
+version: "3.7"
+services:
+  appium:
+    container_name: appium
+    hostname: appium
+    image: appium/appium
+    privileged: true
+    volumes:
+      - type: bind
+        source: ./$APP_SOURCE/
+        target: /apk/
+      - /dev/bus/usb:/dev/bus/usb
+      - ~/.android:/root/.android
+    ports:
+      - 4723:4723
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - ANDROID_ADB_SERVER_ADDRESS=host.docker.internal
+
+  test-art:
+    depends_on:
+      - appium
+    container_name: test-art
+    image: test-art
+    hostname: test-art
+    volumes:
+      - type: bind
+        source: ./build/
+        target: /project/build/
+    environment:
+      - SUITE=$SUITE
+      - APP_SOURCE=$APP_SOURCE
+      - APPIUM_PORT=$APPIUM_PORT
+      - APPIUM_IP=$APPIUM_IP
+      - DEVICE_NAME=$DEVICE_NAME
+      - PLATFORM_VERSION=$PLATFORM_VERSION
+      - ENV=$ENV
+    network_mode: "host"
