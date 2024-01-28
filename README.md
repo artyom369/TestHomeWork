@@ -1,5 +1,7 @@
 ## About
 This framework perform basic automation testing of Android app. Can be launched as local as from Docker container
+
+This framework also contains tested .apk sources (/testAppSource)
 ## Instruments:
 * Java 17
 * TestNG

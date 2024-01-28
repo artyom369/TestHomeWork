@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Test Art App</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="text_view_static">Will I get Offer? (◕‿◕)</string>
+    <string name="button">Get Answer</string>
+
+</resources>
