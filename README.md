@@ -12,7 +12,6 @@ This framework perform basic automation testing of Android app. Can be launched 
 * Install Appium server
 ### By Docker:
 * Install Docker
----
 ## Launch tests:
 ### On local:
 * Start ADB `adb devices`
